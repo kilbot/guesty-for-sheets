@@ -11,7 +11,13 @@ const onOpen = (e) => {
   }
 
   // create trigger
-  ScriptApp.newTrigger('myFunction').forSpreadsheet(SpreadsheetApp.getActive()).onEdit().create();
+  try {
+    const ssId = SpreadsheetApp.getActiveSpreadsheet().getId();
+    ScriptApp.newTrigger('myFunction').forSpreadsheet(ssId).onEdit().create();
+  } catch (err) {
+    // TODO (developer) - Handle exception
+    Logger.log('Failed with error %s', err.message);
+  }
 };
 
 const showHelp = () => {
@@ -28,6 +34,7 @@ const onInstall = (e) => {
  *
  */
 const onSelectionChange = (e) => {
+  Browser.msgBox(String(e));
   Logger.log('onSelectionChange', e);
 };
 
@@ -35,7 +42,16 @@ const onSelectionChange = (e) => {
  *
  */
 const myFunction = (e) => {
+  Browser.msgBox(String(e));
   Logger.log('myFunction', e);
+};
+
+/**
+ *
+ */
+const onEdit = (e) => {
+  Browser.msgBox(String(e));
+  Logger.log('onEdit', e);
 };
 
 global.onOpen = onOpen;
@@ -43,3 +59,4 @@ global.showHelp = showHelp;
 global.onInstall = onInstall;
 global.onSelectionChange = onSelectionChange;
 global.myFunction = myFunction;
+global.onEdit = onEdit;

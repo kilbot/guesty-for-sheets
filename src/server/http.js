@@ -5,7 +5,9 @@ export const makeQueryString = (url, params = {}) => {
   return url + (url.indexOf('?') >= 0 ? '&' : '?') + paramString;
 };
 
-export const makeHttpGetRequest = (apiUrl, params, accessToken) => {
+export const makeHttpGetRequest = (apiUrl, params) => {
+  const accessToken = '';
+
   const url = makeQueryString(apiUrl, params);
   const response = UrlFetchApp.fetch(url, {
     headers: {
