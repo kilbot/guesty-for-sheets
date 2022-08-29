@@ -9,7 +9,7 @@ export const makeHttpGetRequest = (apiUrl, params, accessToken) => {
   const url = makeQueryString(apiUrl, params);
   const response = UrlFetchApp.fetch(url, {
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `Basic ${accessToken}`,
     },
     muteHttpExceptions: true,
   });

@@ -6,4 +6,20 @@ const doGet = () => {
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.DEFAULT);
 };
 
+/**
+ *
+ */
+const onEditorsHomepage = () => {
+  Logger.log('onEditorsHomepage');
+};
+
+/**
+ *
+ */
+const onFileScopeGrantedEditors = () => {
+  Logger.log('onFileScopeGrantedEditors');
+};
+
 global.doGet = doGet;
+global.onEditorsHomepage = onEditorsHomepage;
+global.onFileScopeGrantedEditors = onFileScopeGrantedEditors;

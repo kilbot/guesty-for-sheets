@@ -1,44 +1,42 @@
 {
-  "timeZone": "Asia/Calcutta",
-  "runtimeVersion": "V8",
-  "dependencies": {
-    "enabledAdvancedServices": [
-      {
-        "userSymbol": "Gmail",
-        "serviceId": "gmail",
-        "version": "v1"
-      },
-      {
-        "userSymbol": "Drive",
-        "serviceId": "drive",
-        "version": "v2"
-      }
-    ],
-    "libraries": [
-      {
-        "userSymbol": "OAuth1",
-        "libraryId": "1CXDCY5sqT9ph64fFwSzVtXnbjpSfWdRymafDrtIZ7Z_hwysTY7IIhi7s",
-        "version": "18"
-      },
-      {
-        "userSymbol": "OAuth2",
-        "libraryId": "1B7FSrk5Zi6L1rSxxTDgDEUsPzlukDsi4KGuTMorsTQHhGBzBkMun4iDF",
-        "version": "38"
-      }
-    ]
-  },
-  "webapp": {
-    "access": "ANYONE",
-    "executeAs": "USER_ACCESSING"
-  },
-  "exceptionLogging": "STACKDRIVER",
-  "oauthScopes": [
-    "https://www.googleapis.com/auth/gmail.send",
-    "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/script.external_request",
-    "https://www.googleapis.com/auth/script.scriptapp",
-    "https://www.googleapis.com/auth/script.send_mail",
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/script.container.ui"
-  ]
+	"timeZone": "Africa/Casablanca",
+	"exceptionLogging": "STACKDRIVER",
+	"runtimeVersion": "V8",
+	"dependencies": {
+		"enabledAdvancedServices": [
+			{
+				"userSymbol": "Sheets_v4",
+				"serviceId": "sheets",
+				"version": "v4"
+			}
+		]
+	},
+	"oauthScopes": [
+		"https://www.googleapis.com/auth/spreadsheets.currentonly",
+		"https://www.googleapis.com/auth/script.external_request",
+		"https://www.googleapis.com/auth/script.container.ui",
+		"https://www.googleapis.com/auth/script.scriptapp"
+	],
+	"urlFetchWhitelist": ["https://api.guestyforhosts.com/external/v1"],
+	"addOns": {
+		"common": {
+			"name": "Guesty for Sheets",
+			"logoUrl": "https://storage.googleapis.com/guesty-for-sheets/guesty-64.png"
+		},
+		"sheets": {
+			"homepageTrigger": {
+				"runFunction": "onEditorsHomepage"
+			},
+			"onFileScopeGrantedTrigger": {
+				"runFunction": "onFileScopeGrantedEditors"
+			}
+		}
+	},
+	"executionApi": {
+		"access": "MYSELF"
+	},
+	"webapp": {
+		"access": "ANYONE",
+		"executeAs": "USER_ACCESSING"
+	}
 }
