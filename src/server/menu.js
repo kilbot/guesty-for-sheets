@@ -2,22 +2,25 @@ const onOpen = (e) => {
   try {
     SpreadsheetApp.getUi()
       .createMenu('Guesty for Sheets')
-      .addItem('Fetch Properties', 'fetchProperties')
+      .addItem('Clear and Fetch Properties', 'fetchProperties')
+      .addItem('Trigger Fetch Reservations', 'triggerGetReservations')
       .addSeparator()
       .addItem('Help', 'showHelp')
       .addToUi();
+
+    // addTrigger('triggerGetReservations');
   } catch (f) {
     Logger.log(f.message);
   }
 
   // create trigger
-  try {
-    const ssId = SpreadsheetApp.getActiveSpreadsheet().getId();
-    ScriptApp.newTrigger('myFunction').forSpreadsheet(ssId).onEdit().create();
-  } catch (err) {
-    // TODO (developer) - Handle exception
-    Logger.log('Failed with error %s', err.message);
-  }
+  // try {
+  //   const ssId = SpreadsheetApp.getActiveSpreadsheet().getId();
+  //   ScriptApp.newTrigger('myFunction').forSpreadsheet(ssId).onEdit().create();
+  // } catch (err) {
+  //   // TODO (developer) - Handle exception
+  //   Logger.log('Failed with error %s', err.message);
+  // }
 };
 
 const showHelp = () => {
@@ -30,33 +33,6 @@ const onInstall = (e) => {
   onOpen(e);
 };
 
-/**
- *
- */
-const onSelectionChange = (e) => {
-  Browser.msgBox(String(e));
-  Logger.log('onSelectionChange', e);
-};
-
-/**
- *
- */
-const myFunction = (e) => {
-  Browser.msgBox(String(e));
-  Logger.log('myFunction', e);
-};
-
-/**
- *
- */
-const onEdit = (e) => {
-  Browser.msgBox(String(e));
-  Logger.log('onEdit', e);
-};
-
 global.onOpen = onOpen;
 global.showHelp = showHelp;
 global.onInstall = onInstall;
-global.onSelectionChange = onSelectionChange;
-global.myFunction = myFunction;
-global.onEdit = onEdit;
